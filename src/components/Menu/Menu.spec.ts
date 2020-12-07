@@ -24,10 +24,10 @@ describe("Menu", () => {
   const menuMachine = Machine(
     addTests(menuStateTransitions, {
       hidden: () => {
-        cy.get(".Menu").should("not.exist");
+        cy.get(".Menuhidden").should("exist");
       },
       displayed: () => {
-        cy.get(".Menu").should("exist");
+        cy.get(".Menudefault").should("exist");
       },
       default: () => {
         cy.get(".Menudefault").should("exist");
@@ -46,10 +46,10 @@ describe("Menu", () => {
       cy.visit("/features");
     },
     PORTRAIT: () => {
-      //cy.visit("/");
+      cy.viewport("ipad-mini", "portrait");
     },
     LANDSCAPE: () => {
-      //cy.visit("/");
+      cy.viewport("ipad-mini", "landscape");
     },
   });
 
