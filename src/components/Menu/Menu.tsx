@@ -4,6 +4,7 @@ import { Machine } from "xstate";
 /**
  * Imports other types, components and hooks.
  */
+import { useXStateValue } from "../../hooks/use-xstate-value";
 
 /**
  * Defines the Menu type.
@@ -117,7 +118,9 @@ const menuMachine = Machine(menuStateTransitions);
  */
 const Menu = (props: TMenu) => {
   const { state } = props;
-  return <div className="Menu">Menu: {JSON.stringify(state?.value)}</div>;
+  const stateNormalized = useXStateValue(state);
+  const clx = `Menu Menu${stateNormalized}`;
+  return <div className={clx}>Menu: {JSON.stringify(stateNormalized)}</div>;
 };
 
 Menu.defaultProps = MenuDefaultProps;

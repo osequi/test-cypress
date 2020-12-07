@@ -4,3 +4,5 @@ describe("The Home Page", () => {
     cy.get(".Menu").should("contain", "Menu");
   });
 });
+
+export {};

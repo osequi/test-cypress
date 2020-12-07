@@ -7,7 +7,7 @@
 - Create the first test:
 
 ```js
-// src/App.spec.js
+// src/App.spec.ts
 describe("The Home Page", () => {
   it("successfully loads", () => {
     cy.visit("/");
@@ -29,7 +29,7 @@ export default App;
 {
   "baseUrl": "http://localhost:3000",
   "integrationFolder": "./src",
-  "testFiles": "**/*.spec.js",
+  "testFiles": "**/*.spec.ts",
   "video": false
 }
 ```

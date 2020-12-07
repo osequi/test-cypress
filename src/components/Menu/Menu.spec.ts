@@ -23,17 +23,17 @@ function addTests(state, tests) {
 describe("Menu", () => {
   const menuMachine = Machine(
     addTests(menuStateTransitions, {
-      hidden: ({ findByTestId }) => {
-        findByTestId("menu").should("not.exist");
+      hidden: () => {
+        cy.get(".Menu").should("not.exist");
       },
-      displayed: ({ findByTestId }) => {
-        findByTestId("menu");
+      displayed: () => {
+        cy.get(".Menu").should("exist");
       },
-      default: ({ findByTestId }) => {
-        findByTestId("menuDefault");
+      default: () => {
+        cy.get(".Menudefault").should("exist");
       },
-      titleWithIcon: ({ findByTestId }) => {
-        findByTestId("menuTitleWithIcon");
+      titleWithIcon: () => {
+        cy.get(".MenutitleWithIcon").should("exist");
       },
     })
   );
