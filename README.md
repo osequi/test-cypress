@@ -8,14 +8,14 @@
 
 ```js
 // src/App.spec.js
-describe("My First Test", () => {
-  it("Visits the Kitchen Sink", () => {
+describe("The Home Page", () => {
+  it("successfully loads", () => {
     cy.visit("/");
   });
 });
 ```
 
-- Create `cypress.json`
+- Create `cypress.json`. See https://docs.cypress.io/guides/getting-started/testing-your-app.html#Step-3-Configure-Cypress
 
 ```json
 {

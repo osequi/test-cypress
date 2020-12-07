@@ -1,5 +1,5 @@
-describe("My First Test", () => {
-  it("Visits the Kitchen Sink", () => {
+describe("The Home Page", () => {
+  it("successfully loads", () => {
     cy.visit("/");
   });
 });
