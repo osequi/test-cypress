@@ -51,14 +51,10 @@ interface MenuStateContext {
  */
 interface MenuStateSchema {
   states: {
-    unknown: {};
+    idle: {};
     hidden: {};
-    displayed: {
-      states: {
-        default: {};
-        titleWithIcon: {};
-      };
-    };
+    default: {};
+    titleWithIcon: {};
   };
 }
 
@@ -80,25 +76,21 @@ const menuStateTransitions = {
   initial: "unknown",
   states: {
     unknown: {
-      on: { HOMEPAGE: "hidden", NONHOMEPAGE: "displayed" },
+      on: {
+        "": [
+          { target: "hidden", cond: "isHomepage" },
+          { target: "default", cond: "isNotHomepageAndLandscape" },
+          { target: "titleWithIcon", cond: "isNotHomepageAndPortrait" },
+        ],
+      },
     },
     hidden: {
-      on: { NONHOMEPAGE: "displayed" },
+      on: { NONHOMEPAGE: "unknown" },
     },
-    displayed: {
-      on: {
-        HOMEPAGE: "hidden",
-      },
-      initial: "default",
-      states: {
-        default: {
-          on: { PORTRAIT: "titleWithIcon" },
-        },
-        titleWithIcon: {
-          on: { LANDSCAPE: "default" },
-        },
-      },
+    default: {
+      on: {},
     },
+    titleWithIcon: {},
   },
 };
 
